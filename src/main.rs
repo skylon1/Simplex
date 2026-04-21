@@ -1,4 +1,5 @@
-use std::fs;
+use std::ops::Index;
+use std::{fs, result};
 use std::path::Path;
 
 #[derive(Debug)]
@@ -16,7 +17,7 @@ pub struct LinearProgram {
 }
 
 #[derive(Debug)]
-pub struct StandardForm {
+pub struct SimplexDict {
     pub x_n: Vec<f64>,
     pub a: Vec<Vec<f64>>,
     pub b: Vec<f64>,
@@ -28,13 +29,13 @@ pub struct StandardForm {
     pub n: usize,
 }
 
-impl StandardForm {
+impl SimplexDict {
     pub fn from_program(input: &LinearProgram) -> Self {
         let x_n = vec![0.0; input.n];
         let x_b = input.b.clone();
         let z_0 = 0.0;
         let z = 0.0;
-        StandardForm {
+        SimplexDict {
             x_n,
             a: input.a.clone(),
             b: input.b.clone(),
@@ -45,6 +46,15 @@ impl StandardForm {
             m: input.m,
             n: input.n,
         }
+    }
+    pub fn solve(& mut self) -> Result<f64, string>{
+        loop {
+            
+        }
+    }
+    pub fn step(& mut self){
+        //pricing
+        let max_id = self.c.iter().iter().enumerate().
     }
 }
 
